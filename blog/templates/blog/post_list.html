@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Meily's blog</title>
-	</head>
-	<body>
-		<div>
-			<h1><a href="/">Django Girls Blog</a></h1>
-		</div>
 
-		<div>
-			<p>published: </p>
-			<p>It works!</p>
-		</div>
+{% extends 'blog/base.html' %}
 
-		<dir>
-			
-		</dir>
-
-	</body>
-</html>
+	{% block content %}
+		{% for post in posts %}
+			<div class="post">
+				<div class="date">
+					<p>published: {{ post.published_date }}</p>
+				</div>
+				<h2><a href="">{{ post.title }}</a></h2>
+				<p>{{ post.text|linebreaksbr }}</p>
+			</div>
+	    {% endfor %}
+	{% endblock %}
